@@ -22,14 +22,18 @@ with tf.Session() as sess_tf:
     print(res_tf)
 
 # ================== Variables using placeholders ===================
-
 p = tf.placeholder(dtype=tf.float32, shape=(1,4), name = "var_p")
 q = tf.placeholder(dtype=tf.float32, shape=(1,4), name = "var_q")
 
 sum_ph = tf.add(p, q)
 
 with tf.Session() as sess_ph:
-    res_ph = sess_ph.run(sum_ph, feed_dict={p:[1.0, 1.0, 0.0, 0.0], q:[3.1, 2.2, 2.9, 3.4]})
+    res_ph = sess_ph.run(sum_ph, feed_dict={p:[[2.3, 2.9, 2.4, 1.9]], q:[[1.1, 1.3, 1.9, 1.5]]})  # Notice the double bracket
     print(res_ph)
+
+# Shapes
+# p:[2.3, 2.9, 2.4, 1.9]  ==> shape: (4,)
+# p:[[2.3, 2.9, 2.4, 1.9]] ==> shape: (1,4)
+# p:[[2.3], [2.9], [2.4], [1.9]] ==> shape: (4,1)
 
 
